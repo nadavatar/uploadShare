@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import Header from './Components/Header';
+import Uploader from './Components/Uploader';
+import Email from './Components/Email';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { downloadUrl: '' };
+  }
+
+  render() {
+    return (
+      <div className='App'>
+        <Header />
+        <Uploader
+          id='file'
+          name='file'
+          onChange={file => {
+            console.log('File changed: ', file);
+
+            if (file) {
+              file.progress(info =>
+                console.log('File progress: ', info.progress)
+              );
+              file.done(info => console.log('File uploaded: ', info));
+            }
+          }}
+          onUploadComplete={info => this.setState({ downloadUrl: info.cdnUrl })}
+        />
+        <Email downloadUrl={this.state.downloadUrl} />
+        {/* {this.state.downloadUrl && (
+          <Email downloadUrl={this.state.downloadUrl} />
+        )} */}
+      </div>
+    );
+  }
 }
 
 export default App;
