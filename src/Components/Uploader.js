@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import uploadcare from 'uploadcare-widget';
 
 class Uploader extends Component {
   componentDidMount() {
     const widget = uploadcare.Widget(this.uploader);
-    const {value, onChange, onUploadComplete} = this.props;
+    const { value, onChange, onUploadComplete } = this.props;
 
     if (typeof value !== 'undefined') {
       widget.value(value);
@@ -60,9 +60,10 @@ class Uploader extends Component {
 
     return (
       <input
-        type="hidden"
+        type='hidden'
         ref={input => (this.uploader = input)}
         {...attributes}
+        className='btn btn-primary'
       />
     );
   }
