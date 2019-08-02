@@ -28,10 +28,10 @@ class App extends Component {
           }}
           onUploadComplete={info => this.setState({ downloadUrl: info.cdnUrl })}
         />
-        <Email downloadUrl={this.state.downloadUrl} />
-        {/* {this.state.downloadUrl && (
+        {/* <Email downloadUrl={this.state.downloadUrl} /> */}
+        {this.state.downloadUrl && (
           <Email downloadUrl={this.state.downloadUrl} />
-        )} */}
+        )}
       </div>
     );
   }
