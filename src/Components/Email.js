@@ -24,18 +24,22 @@ class Email extends Component {
       emailAddress: emailAddress,
       downloadUrl: downloadUrl
     };
-
-    const response = await Axios.post(
-      'http://localhost:4001/api/sendEmail/',
-      jsonToUpload
-    );
-    if (response.status.toString().startsWith('2')) {
-      alert(
-        'Your file was succesfully sent to your email address!\nit might take a few moments...'
+    try {
+      const response = await Axios.post(
+        'http://localhost:4001/api/sendEmail/',
+        jsonToUpload
       );
-    } else {
-      alert('Something went wrong');
-      console.error(`Got ${response.status} status from the server`);
+      if (response.status.toString().startsWith('2')) {
+        alert(
+          'Your file was sent successfully!\nit might take a couple of minutes for it to arrive...'
+        );
+      } else {
+        alert('Something went wrong!');
+        console.error(`Got status ${response.status} from the server...`);
+      }
+    } catch (error) {
+      console.error(error);
+      alert('Something went wrong!');
     }
   };
 
