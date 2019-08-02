@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import styled from 'styled-components';
 
 class Header extends Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <h1>UploadShare</h1>
+        <h1 id='header'>UploadShare</h1>
       </div>
     );
   }
