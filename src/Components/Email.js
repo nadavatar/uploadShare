@@ -75,9 +75,9 @@ class Email extends Component {
                 Submit
               </button>
               {this.state.showCard && (
-                <div class='card-body'>
-                  <h4 class='card-title'>Your file was sent</h4>
-                  <p class='card-text'>
+                <div className='card-body'>
+                  <h4 className='card-title'>Your file was sent</h4>
+                  <p className='card-text'>
                     The file you have uploaded is on his way to the email
                     address you entered!
                     <br /> it might take a few minutes for it to arrive...
